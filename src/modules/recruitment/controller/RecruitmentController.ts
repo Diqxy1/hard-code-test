@@ -1,8 +1,18 @@
 import { Request, Response } from 'express'
 
 import { CreateRecruitmentService } from '../services/CreateRecruitmentService'
+import { DeleteCandidatesService } from '../services/DeleteCandidatesService'
+import { ListCandidatesService } from '../services/ListCandidatesService'
 
 export default class RecruitmentController {
+  public async list(request: Request, response: Response): Promise<Response> {
+    const listCandidates = new ListCandidatesService()
+
+    const candidates = await listCandidates.execute()
+
+    return response.status(302).json(candidates)
+  }
+
   public async create(request: Request, response: Response): Promise<Response> {
     const {
       name,
@@ -52,7 +62,17 @@ export default class RecruitmentController {
       timeExperience
     })
 
-    return response.json(createRecruitment)
+    return response.status(201).json(createRecruitment)
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params
+
+    const deleteCandidate = new DeleteCandidatesService()
+
+    await deleteCandidate.execute({ id })
+
+    return response.status(200).json('candidate successfully removed')
   }
 }
 

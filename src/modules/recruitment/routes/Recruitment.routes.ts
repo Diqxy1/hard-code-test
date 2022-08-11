@@ -7,10 +7,12 @@ const recruitmentRouter = Router()
 
 const recruitmentController = new RecruitmentController()
 
+recruitmentRouter.get('/', recruitmentController.list)
 recruitmentRouter.post(
   '/',
   CreateRecruitmentValidator,
   recruitmentController.create
 )
+recruitmentRouter.delete('/', recruitmentController.delete)
 
 export default recruitmentRouter
