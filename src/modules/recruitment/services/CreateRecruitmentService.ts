@@ -152,7 +152,7 @@ class CreateRecruitmentService {
         name: 'Hard Code API',
         email: 'hardcode@express.com'
       },
-      subject: '[API Vendas] Criação de conta',
+      subject: 'Formulario de recrutamento!',
       templateData: {
         file: notify,
         variables: {
