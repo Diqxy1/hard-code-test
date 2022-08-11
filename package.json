@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/shared/http/server.js",
+    "start": "node dist/shared/http/Server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "cron": "node dist/shared/cli/cron.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/http/Server.ts",
