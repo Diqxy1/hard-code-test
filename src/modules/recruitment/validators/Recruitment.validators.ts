@@ -13,6 +13,7 @@ export const CreateRecruitmentValidator = celebrate({
     email: Joi.string().required(),
     phone: Joi.string().required(),
     city: Joi.string().required(),
+    availabilityForJuazeiro: Joi.boolean().optional(),
     office: Joi.boolean().required(),
     hybrid: Joi.boolean().required(),
     partTime: Joi.boolean().required(),
@@ -32,6 +33,10 @@ export const CreateRecruitmentValidator = celebrate({
       )
       .required(),
     sector: Joi.array().required(),
+    tecnology: Joi.array().optional(),
+    wordpress: Joi.boolean().optional(),
+    elementor: Joi.boolean().optional(),
+    nocodeLocode: Joi.boolean().optional(),
     professionalLevel: Joi.array()
       .items(
         Joi.string().valid(

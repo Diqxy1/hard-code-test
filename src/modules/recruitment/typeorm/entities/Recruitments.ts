@@ -29,6 +29,9 @@ class Recruitments {
   @Column()
   city: string
 
+  @Column()
+  availabilityForJuazeiro: boolean | null
+
   // work in person in our office
   @Column()
   office: boolean
@@ -73,6 +76,18 @@ class Recruitments {
 
   @Column()
   sector: string[]
+
+  @Column()
+  tecnology: string[] | null
+
+  @Column()
+  wordpress: boolean | null
+
+  @Column()
+  elementor: boolean | null
+
+  @Column()
+  nocodeLocode: boolean | null
 
   @Column()
   professionalLevel: string[]

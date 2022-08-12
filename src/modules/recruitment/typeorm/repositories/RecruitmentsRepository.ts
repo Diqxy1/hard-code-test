@@ -10,6 +10,7 @@ interface ICreateRecruitment {
   email: string
   phone: string
   city: string
+  availabilityForJuazeiro: boolean | null
   office: boolean
   hybrid: boolean
   partTime: boolean
@@ -23,6 +24,10 @@ interface ICreateRecruitment {
   trainingAndCourses: string
   area: Area
   sector: string[]
+  tecnology: string[] | null
+  wordpress: boolean | null
+  elementor: boolean | null
+  nocodeLocode: boolean | null
   professionalLevel: string[]
   timeExperience: string[]
 }
@@ -35,6 +40,7 @@ class RecruitmentsRepository extends Repository<Recruitments> {
     email,
     phone,
     city,
+    availabilityForJuazeiro,
     office,
     hybrid,
     partTime,
@@ -48,6 +54,10 @@ class RecruitmentsRepository extends Repository<Recruitments> {
     trainingAndCourses,
     area,
     sector,
+    tecnology,
+    wordpress,
+    elementor,
+    nocodeLocode,
     professionalLevel,
     timeExperience
   }: ICreateRecruitment): Promise<Recruitments> {
@@ -57,6 +67,7 @@ class RecruitmentsRepository extends Repository<Recruitments> {
       email,
       phone,
       city,
+      availabilityForJuazeiro,
       office,
       hybrid,
       partTime,
@@ -70,6 +81,10 @@ class RecruitmentsRepository extends Repository<Recruitments> {
       trainingAndCourses,
       area,
       sector,
+      tecnology,
+      wordpress,
+      elementor,
+      nocodeLocode,
       professionalLevel,
       timeExperience
     })

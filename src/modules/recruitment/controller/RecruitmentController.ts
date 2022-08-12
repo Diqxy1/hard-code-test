@@ -20,6 +20,7 @@ export default class RecruitmentController {
       email,
       phone,
       city,
+      availabilityForJuazeiro,
       office,
       hybrid,
       partTime,
@@ -33,6 +34,10 @@ export default class RecruitmentController {
       trainingAndCourses,
       area,
       sector,
+      tecnology,
+      wordpress,
+      elementor,
+      nocodeLocode,
       professionalLevel,
       timeExperience
     } = request.body
@@ -45,6 +50,7 @@ export default class RecruitmentController {
       email,
       phone,
       city,
+      availabilityForJuazeiro,
       office,
       hybrid,
       partTime,
@@ -58,6 +64,10 @@ export default class RecruitmentController {
       trainingAndCourses,
       area,
       sector,
+      tecnology,
+      wordpress,
+      elementor,
+      nocodeLocode,
       professionalLevel,
       timeExperience
     })

@@ -28,6 +28,7 @@ interface IRequest {
   email: string
   phone: string
   city: string
+  availabilityForJuazeiro: boolean | null
   office: boolean
   hybrid: boolean
   partTime: boolean
@@ -41,6 +42,10 @@ interface IRequest {
   trainingAndCourses: string
   area: Area
   sector: string[]
+  tecnology: string[] | null
+  wordpress: boolean | null
+  elementor: boolean | null
+  nocodeLocode: boolean | null
   professionalLevel: string[]
   timeExperience: string[]
 }
@@ -52,6 +57,7 @@ class CreateRecruitmentService {
     email,
     phone,
     city,
+    availabilityForJuazeiro,
     office,
     hybrid,
     partTime,
@@ -65,6 +71,10 @@ class CreateRecruitmentService {
     trainingAndCourses,
     area,
     sector,
+    tecnology,
+    wordpress,
+    elementor,
+    nocodeLocode,
     professionalLevel,
     timeExperience
   }: IRequest): Promise<Recruitments> {
@@ -99,6 +109,20 @@ class CreateRecruitmentService {
       }
     }
 
+    if (area == Area.ProductAndTechnology) {
+      if (
+        tecnology == undefined ||
+        wordpress == undefined ||
+        elementor == undefined ||
+        nocodeLocode == undefined
+      ) {
+        throw new AppError(
+          'the following technology fields need to be answered: [tecnology, wordpress, elementor, nocodeLocode]',
+          400
+        )
+      }
+    }
+
     if (area == Area.MarketingAndSales) {
       for (let i = 0; i < sector.length; i++) {
         if (!(sector[i] in MarketingAndSales)) {
@@ -121,12 +145,20 @@ class CreateRecruitmentService {
       }
     }
 
+    if (
+      city.toUpperCase() != 'CRATO' ||
+      city.toUpperCase() != 'JUAZEIRO DO NORTE'
+    ) {
+      availabilityForJuazeiro = null
+    }
+
     const newRecruitment = await recruitmentsRepository.createRecruitment({
       name: validateName,
       dateOfBirth: validateDate,
       email: validateEmail,
       phone: validatePhone,
       city,
+      availabilityForJuazeiro,
       office,
       hybrid,
       partTime,
@@ -141,6 +173,10 @@ class CreateRecruitmentService {
       trainingAndCourses,
       area,
       sector,
+      tecnology,
+      wordpress,
+      elementor,
+      nocodeLocode,
       professionalLevel,
       timeExperience
     })
