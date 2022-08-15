@@ -1,0 +1,221 @@
+{
+  "openapi": "3.0.0",
+  "infor": {
+    "title": "Hard Code API de recrutamentos",
+    "description": "API de recrutamentos",
+    "termsOfService": "http://localhost:3334/terms",
+    "contact": {
+      "email": "diqxy1@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3334",
+      "description": "API de test"
+    }
+  ],
+  "paths": {
+    "/recruitment/": {
+      "post": {
+        "sumary": "Cadastro de candidato",
+        "description": "Rota que cadastra novo candidato",
+        "tags": ["recruitment"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recruitment"
+              },
+              "examples": {
+                "recruitment": {
+                  "value": {
+                    "name": "eduardo",
+                    "dateOfBirth": "04-05-1999",
+                    "email": "teste9@gmail.com",
+                    "phone": "+5588992627672",
+                    "city": "cidade teste",
+                    "office": "True",
+                    "hybrid": "True",
+                    "partTime": "False",
+                    "ownAComputer": "True",
+                    "ownASmartphone": "True",
+                    "professionalExperience": "True",
+                    "currentlyWorking": "True",
+                    "partnership": "True",
+                    "technicalHighSchool": "True",
+                    "school": "escola teste",
+                    "trainingAndCourses": "cruso teste",
+                    "area": "ProductAndTechnology",
+                    "sector": ["FrontEnd", "Cloud"],
+                    "tecnology": ["python"],
+                    "wordpress": "True",
+                    "elementor": "False",
+                    "nocodeLocode": "True",
+                    "professionalLevel": ["Pleno", "Junior"],
+                    "timeExperience": ["Freelancer"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "406": {
+            "description": "Not Acceptable"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Recruitment"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Recruitment": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "availabilityForJuazeiro": {
+              "type": "boolean",
+              "nullable": true
+          },
+          "office": {
+            "type": "boolean"
+          },
+          "hybrid": {
+            "type": "boolean"
+          },
+          "partTime": {
+            "type": "boolean"
+          },
+          "ownAComputer": {
+            "type": "boolean"
+          },
+          "ownASmartphone": {
+            "type": "boolean"
+          },
+          "professionalExperience": {
+            "type": "boolean"
+          },
+          "currentlyWorking": {
+            "type": "boolean"
+          },
+          "partnership": {
+            "type": "boolean"
+          },
+          "technicalHighSchool": {
+            "type": "boolean"
+          },
+          "school": {
+            "type": "string"
+          },
+          "trainingAndCourses": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string",
+            "enum": ["ProductAndTechnology", "MarketingAndSales", "PeopleAndOperations"]
+          },
+          "sector": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "BackEnd",
+                "FrontEnd",
+                "Cloud",
+                "FullStack",
+                "Design",
+                "Copywriter",
+                "SocialMedia",
+                "Performance",
+                "InsideSales",
+                "OutboundSales",
+                "KeyAccount",
+                "BusinessDevelopment",
+                "FinancialAndAccounting",
+                "PeopleAndCulture",
+                "juridical"
+              ]
+            }
+          },
+          "tecnology": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "wordpress": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "elementor": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "nocodeLocode": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "professionalLevel": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Apprentice",
+                "Junior",
+                "Pleno",
+                "Senior",
+                "Specialist",
+                "Manager"
+              ]
+            }
+          },
+          "timeExperience": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "NoCompanyExperience",
+                "Freelancer",
+                "LessThanAYear",
+                "UpToThreeYears",
+                "UpToFiveYears",
+                "UpToTenYears",
+                "UpToTwentYears"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -5,17 +5,21 @@ import '../typeorm/Index'
 import { errors } from 'celebrate'
 import cors from 'cors'
 import express, { Request, Response, NextFunction } from 'express'
+import swaggerUi from 'swagger-ui-express'
+
 import 'express-async-errors'
 
 import { AppError } from '@shared/errors/AppError'
 
 import { routes } from '../routes/Index'
+import swagger from './swagger/swagger.json'
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use(routes)
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swagger))
 
 app.use(errors())
 
